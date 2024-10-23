@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Previsão do Tempo</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Previsão do Tempo</h1>
-        <input type="text" id="location" placeholder="Digite uma cidade">
-        <button id="getWeather">Verificar Tempo</button>
-        <div id="weatherResult"></div>
-    </div>
+    <select id="location">
+        <option value="Porto Alegre">Porto Alegre</option>
+        <option value="Caxias do Sul">Caxias do Sul</option>
+        <option value="Pelotas">Pelotas</option>
+        <option value="Santa Maria">Santa Maria</option>
+        <option value="Rio Grande">Rio Grande</option>
+        <option value="Nova York">Nova York</option>
+        <!-- Adicione mais cidades conforme necessário -->
+    </select>
+    <button id="getWeather">Buscar Tempo</button>
+    <div id="weatherResult"></div>
+    
     <script src="script.js"></script>
 </body>
 </html>
