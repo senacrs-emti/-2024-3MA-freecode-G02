@@ -8,3 +8,9 @@
     height: 90px;
     margin: 10px
 }
+#menu-prev{
+    background-color: #1F1B49;
+    width: 90%;
+    height: 400px;
+    border-radius: 10%;
+}   
