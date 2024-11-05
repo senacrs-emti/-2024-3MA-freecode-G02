@@ -1,6 +1,16 @@
 const options = {method: 'GET', headers: {accept: 'application/json'}};
 const PortoAlegre = { lat: -30.0277, lon: -51.2287 };
 
+// Função para gerar um arquivo JSON e forçar o download
+const salvarComoJSON = (dados) => {
+  const jsonData = JSON.stringify(dados, null, 2); // Converte os dados em formato JSON
+  const blob = new Blob([jsonData], { type: 'application/json' }); // Cria um objeto Blob com os dados JSON
+  const link = document.createElement('a'); // Cria um link temporário
+  link.href = URL.createObjectURL(blob); // Cria uma URL para o Blob
+  link.download = 'dados-clima.json'; // Define o nome do arquivo
+  link.click(); // Simula o clique no link para baixar o arquivo
+};
+
 fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${PortoAlegre.lat},${PortoAlegre.lon}&apikey=KWRks1B7WhQbOvakyzSBgJFd1eSkEdD7`, options)
   .then(res => res.json())
   .then(res => {

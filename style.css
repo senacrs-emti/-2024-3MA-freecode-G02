@@ -34,9 +34,35 @@ button{
     height: 7vh;
 }
 
+/* PÁGINA PREVISÃO*/
 #menu-prev{
     background-color: #1F1B49;
     width: 90%;
     height: 400px;
     border-radius: 10%;
+    display: flex;
+    justify-self:center;
+    flex-direction: column;
 }   
+#semana-prev{
+    display: flex;
+    justify-content: center;
+}
+#semana-prev button{
+    width: 50px;
+    margin:10px
+}
+.txt-branco{
+    color: aliceblue;
+}
+.menu-content{
+    border: 1px solid black;
+    width: 40%;
+    height: 60px;
+}
+#menu-dados{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
