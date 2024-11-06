@@ -10,11 +10,11 @@ const dados = fetch('./data.json').then((response) => response.json())
       let prevChuva = json.data.values.precipitationProbability;
 
       //teste var
-      console.log('Raios UV: ', raiosUV);
-      console.log('Temperatura:', temperatura);
-      console.log('Umidade: ', umidade);
-      console.log('Ventos: ', ventos);
-      console.log('Previsão tempo: ', prevChuva);
+      console.log('Raios UV: ', raiosUV);//nível de UV: 0-2(baixo); 3-5(moderado); 6-7(alto!!); 8-10(muito alto!!)
+      console.log('Temperatura:', temperatura);//em C°
+      console.log('Umidade: ', umidade);//em porcentagem
+      console.log('Ventos: ', ventos);//está em m/s deve ser convertido para k/m
+      console.log('Previsão tempo: ', prevChuva);//em porcentagem
 
       document.getElementById("Raios-UV").innerHTML = `Raios UV: ${raiosUV}`;
       document.getElementById("temperatura").innerHTML = `Temperatura: ${temperatura} °C`;
