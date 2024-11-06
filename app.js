@@ -20,7 +20,8 @@ const dados = fetch('./data.json').then((response) => response.json())
       document.getElementById("temperatura").innerHTML = `Temperatura: ${temperatura} °C`;
       document.getElementById("Umidade").innerHTML = `Umidade: ${umidade}`;
       document.getElementById("Velocidade-vento").innerHTML = `Ventos: ${ventos}`;
-      document.getElementById("Prev-chuva").innerHTML = `Precipitação: ${prevChuva}`;
+      document.getElementById("painel-menu-prev").innerHTML = 
+      document.getElementById("Prev-chuva").innerHTML = `Precipitação: ${prevChuva}%`;;
     });
 
 
