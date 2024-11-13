@@ -38,12 +38,11 @@ function obterDiaDaSemanaEDiaDoMes(dia = 0, mes = 0) {
 }
 
 
-document.getElementById("Dia").innerHTML = `${obterDiaDaSemanaEDiaDoMes()}`;
-for(i=0;i<7;i++){
-  document.getElementById("Data-"+i).innerHTML = `${obterDiaDaSemanaEDiaDoMes()}`;
+//document.getElementById(`Dia`).innerHTML = `${obterDiaDaSemanaEDiaDoMes(0,0)}`;
+for(i=1;i<8;i++){
+  console.log(i);
+  document.getElementById(`Data-${i}`).innerHTML = `Data${obterDiaDaSemanaEDiaDoMes(i,0)}`;
 }
-// Exibe o dia da semana atual
-
 
 
 
