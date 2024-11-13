@@ -32,8 +32,21 @@ h1{
 }
 .conteiner-semana h2{
     display: flex;
-    justify-self: flex-start;
+    align-self: center;
+    justify-self: flex-end;
 }
+.conteiner-semana button{
+    width: 45px;
+    height: 45px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-self: center;
+    background-image: url(./03-20.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60px;
+}    
 
 
 /* PÁGINA PREVISÃO*/
