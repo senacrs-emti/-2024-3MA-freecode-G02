@@ -13,15 +13,34 @@ const dados = fetch('./data.json').then((response) => response.json())
       console.log('Raios UV: ', raiosUV);//nível de UV: 0-2(baixo); 3-5(moderado); 6-7(alto!!); 8-10(muito alto!!)
       console.log('Temperatura:', temperatura);//em C°
       console.log('Umidade: ', umidade);//em porcentagem
-      console.log('Ventos: ', ventos);//está em m/s deve ser convertido para k/m
+      console.log('Ventos: ', ventos *3.6);//está em m/s deve ser convertido para k/m
       console.log('Previsão tempo: ', prevChuva);//em porcentagem
 
       document.getElementById("Raios-UV").innerHTML = `${raiosUV}`;
       document.getElementById("temperatura").innerHTML = ` ${temperatura} °C`;
       document.getElementById("Umidade").innerHTML = `${umidade}%`;
-      document.getElementById("Velocidade-vento").innerHTML = `${ventos}`;
+      document.getElementById("Velocidade-vento").innerHTML = `${ventos*3.6}Km/h`;
       document.getElementById("Prev-Chuva").innerHTML =`${prevChuva}%`; 
     });
+
+// Função para obter o dia da semana e o dia do mês
+function obterDiaDaSemanaEDiaDoMes(dia = 0, mes = 0) {
+  const diasDaSemana = [
+      "Domingo", "Segunda-feira", "Terça-feira", 
+      "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"
+  ];
+  
+  const dataAtual = new Date();
+  const diaDaSemana = dataAtual.getDay()+dia;  // Retorna um número de 0 a 6
+  const diaDoMes = dataAtual.getDate()+mes;    // Retorna o dia do mês (1 a 31)
+  
+  return `${diasDaSemana[diaDaSemana]}, ${diaDoMes}`;
+}
+
+
+document.getElementById("Dia").innerHTML = `${obterDiaDaSemanaEDiaDoMes()}`;
+// Exibe o dia da semana atual
+
 
 
 
