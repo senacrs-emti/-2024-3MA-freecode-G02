@@ -34,11 +34,14 @@ function obterDiaDaSemanaEDiaDoMes(dia = 0, mes = 0) {
   const diaDaSemana = dataAtual.getDay()+dia;  // Retorna um número de 0 a 6
   const diaDoMes = dataAtual.getDate()+mes;    // Retorna o dia do mês (1 a 31)
   
-  return `${diasDaSemana[diaDaSemana]}, ${diaDoMes}`;
+  return `${diasDaSemana[diaDaSemana]} | Dia ${diaDoMes}`;
 }
 
 
 document.getElementById("Dia").innerHTML = `${obterDiaDaSemanaEDiaDoMes()}`;
+for(i=0;i<7;i++){
+  document.getElementById("Data-"+i).innerHTML = `${obterDiaDaSemanaEDiaDoMes()}`;
+}
 // Exibe o dia da semana atual
 
 
