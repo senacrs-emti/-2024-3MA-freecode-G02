@@ -16,12 +16,11 @@ const dados = fetch('./data.json').then((response) => response.json())
       console.log('Ventos: ', ventos);//está em m/s deve ser convertido para k/m
       console.log('Previsão tempo: ', prevChuva);//em porcentagem
 
-      document.getElementById("Raios-UV").innerHTML = `Raios UV: ${raiosUV}`;
-      document.getElementById("temperatura").innerHTML = `Temperatura: ${temperatura} °C`;
-      document.getElementById("Umidade").innerHTML = `Umidade: ${umidade}`;
-      document.getElementById("Velocidade-vento").innerHTML = `Ventos: ${ventos}`;
-      document.getElementById("painel-menu-prev").innerHTML = 
-      document.getElementById("Prev-chuva").innerHTML = `Precipitação: ${prevChuva}%`;;
+      document.getElementById("Raios-UV").innerHTML = `${raiosUV}`;
+      document.getElementById("temperatura").innerHTML = ` ${temperatura} °C`;
+      document.getElementById("Umidade").innerHTML = `${umidade}%`;
+      document.getElementById("Velocidade-vento").innerHTML = `${ventos}`;
+      document.getElementById("Prev-Chuva").innerHTML =`${prevChuva}%`; 
     });
 
 
