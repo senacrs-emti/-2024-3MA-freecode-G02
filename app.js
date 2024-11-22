@@ -1,3 +1,12 @@
+//popup:
+document.getElementById('openPopupBtn').addEventListener('click', function() {
+  document.getElementById('popup').style.display = 'flex';
+});
+
+document.getElementById('closePopupBtn').addEventListener('click', function() {
+  document.getElementById('popup').style.display = 'none';
+});
+
 const options = {method: 'GET', headers: {accept: 'application/json'}};
 const PortoAlegre = { lat: -30.0277, lon: -51.2287 };
 
@@ -43,7 +52,6 @@ for(i=1;i<8;i++){
   console.log(i);
   document.getElementById(`Data-${i}`).innerHTML = `Data${obterDiaDaSemanaEDiaDoMes(i,0)}`;
 }
-
 
 
 /* COLOCAR EM UM BOTÂo
