@@ -25,6 +25,7 @@ header{
     height: 90px;
     display: flex;
     justify-self: center;
+    border-radius: 15px;
 }
 h1{
     margin: 30px;
@@ -34,19 +35,26 @@ h1{
     display: flex;
     align-self: center;
     justify-self: flex-end;
+    justify-content: center;
 }
 .conteiner-semana button{
     width: 45px;
     height: 45px;
+    margin-left: 30px;
     border: none;
     background-color: transparent;
     display: flex;
     align-self: center;
+    justify-content: center;
     background-image: url(./03-20.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 60px;
-}    
+}   
+div.nav-semana{
+    display: flex;
+    justify-content: center;
+} 
 
 
 /* PÁGINA PREVISÃO*/
