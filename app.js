@@ -1,6 +1,9 @@
 //popup:
-document.getElementById('openPopupBtn').addEventListener('click', function() {
-  document.getElementById('popup').style.display = 'flex';
+// Função para abrir o popup ao clicar no botão de adicionar tarefa
+document.querySelectorAll('.add-task-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'flex';
+  });
 });
 
 document.getElementById('closePopupBtn').addEventListener('click', function() {
@@ -47,12 +50,10 @@ function obterDiaDaSemanaEDiaDoMes(dia = 0, mes = 0) {
 }
 
 
-//document.getElementById(`Dia`).innerHTML = `${obterDiaDaSemanaEDiaDoMes(0,0)}`;
-for(i=1;i<8;i++){
-  console.log(i);
-  document.getElementById(`Data-${i}`).innerHTML = `Data${obterDiaDaSemanaEDiaDoMes(i,0)}`;
+// Atualizar as datas nos cabeçalhos dos dias da semana
+for (let i = 1; i <= 7; i++) {
+  document.getElementById(`Data-${i}`).innerHTML = obterDiaDaSemanaEDiaDoMes(i - 1, 0);
 }
-
 
 /* COLOCAR EM UM BOTÂo
 fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${PortoAlegre.lat},${PortoAlegre.lon}&apikey=KWRks1B7WhQbOvakyzSBgJFd1eSkEdD7`, options)
