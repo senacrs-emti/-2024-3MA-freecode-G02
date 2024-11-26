@@ -43,18 +43,16 @@ function obterDiaDaSemanaEDiaDoMes(dia = 0, mes = 0) {
   ];
   
   const dataAtual = new Date();
-  const diaDaSemana = dataAtual.getDay()+dia;  // Retorna um número de 0 a 6
-  const diaDoMes = dataAtual.getDate()+mes;    // Retorna o dia do mês (1 a 31)
+  const diaDaSemana = (dataAtual.getDay() + dia) % 7;  // % 7 faz a contagem reiniciar após Sábado
+  const diaDoMes = dataAtual.getDate() + mes;    // Retorna o dia do mês (1 a 31)
   
   return `${diasDaSemana[diaDaSemana]} | Dia ${diaDoMes}`;
 }
-
 
 // Atualizar as datas nos cabeçalhos dos dias da semana
 for (let i = 1; i <= 7; i++) {
   document.getElementById(`Data-${i}`).innerHTML = obterDiaDaSemanaEDiaDoMes(i - 1, 0);
 }
-
 /* COLOCAR EM UM BOTÂo
 fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${PortoAlegre.lat},${PortoAlegre.lon}&apikey=KWRks1B7WhQbOvakyzSBgJFd1eSkEdD7`, options)
   .then(res => res.json())
