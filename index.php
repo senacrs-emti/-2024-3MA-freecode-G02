@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <button class="btn_header"><a href="./index.html">AGENDA</a></button>
+        <button class="btn_header"><a href="./index.php">AGENDA</a></button>
         <button class="btn_header"><a href="./previsao.html">PREVISÃO</a></button>
     </header>
     <main>
@@ -24,7 +24,6 @@
                 <label for="">Descrição</label>
                 <input type="text">
                 <input type="submit">
-                
             </form>
         </div>
     </div>
@@ -32,9 +31,15 @@
         <div class="conteiner-semana">
             <div class="nav-semana">
                 <h2 id="Data-1"></h2>
-                <button class="add-task-btn"></button> <!-- Este botão será usado para abrir o popup -->
+                <button class="add-task-btn"></button> 
             </div>
-            <div class="conteudo-dia-semana"></div>
+            <div class="conteudo-dia-semana">
+                <ul class="evento">
+                    <?php   
+                    
+                    ?>
+                </ul>
+            </div>
         </div>
         <div class="conteiner-semana">
             <div class="nav-semana">
