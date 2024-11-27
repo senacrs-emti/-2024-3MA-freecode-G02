@@ -12,7 +12,7 @@ document.getElementById('closePopupBtn').addEventListener('click', function() {
 import { obterDiaDaSemanaEDiaDoMes } from './calendário.js'
   // Atualizar as datas nos cabeçalhos dos dias da semana
   for (let i = 1; i <= 7; i++) {
-    document.getElementById(`Data-${i}`).innerHTML = obterDiaDaSemanaEDiaDoMes(i - 1, 0);
+    document.getElementById(`Data-${i}`).innerHTML = obterDiaDaSemanaEDiaDoMes(i - 1, i);
   }
 
 
