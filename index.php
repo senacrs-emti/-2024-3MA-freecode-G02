@@ -17,13 +17,14 @@
             <span id="closePopupBtn" class="close">&times;</span>
             <h2>Adicionar Atividade</h2>
             <form action="" method="post">
-                <label for="">Título</label>
-                <input type="text">
-                <label for="">Horário</label>
-                <input type="time" name="" id="">
-                <label for="">Descrição</label>
-                <input type="text">
-                <input type="submit">
+                <input type="hidden" name="dia" id="diaSelecionado">
+                <label for="titulo">Título</label>
+                <input type="text" name="titulo" required>
+                <label for="horario">Horário</label>
+                <input type="time" name="horario" required>
+                <label for="descricao">Descrição</label>
+                <input type="text" name="descricao">
+                <input type="submit" value="Adicionar Tarefa">
             </form>
         </div>
     </div>

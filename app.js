@@ -1,14 +1,16 @@
 //popup:
-// Função para abrir o popup ao clicar no botão de adicionar tarefa
 document.querySelectorAll('.add-task-btn').forEach(button => {
   button.addEventListener('click', function() {
-    document.getElementById('popup').style.display = 'flex';
+      const dia = this.getAttribute('data-dia'); // Captura o dia
+      document.getElementById('diaSelecionado').value = dia; // Define o valor no campo oculto
+      document.getElementById('popup').style.display = 'flex';
   });
 });
 
 document.getElementById('closePopupBtn').addEventListener('click', function() {
   document.getElementById('popup').style.display = 'none';
 });
+
 import { obterDiaDaSemanaEDiaDoMes } from './calendário.js'
   // Atualizar as datas nos cabeçalhos dos dias da semana
   for (let i = 1; i <= 7; i++) {
