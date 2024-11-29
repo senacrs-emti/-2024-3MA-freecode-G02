@@ -8,77 +8,85 @@
 </head>
 <body>
     <header>
-        <button class="btn_header"><a href="./index.html">AGENDA</a></button>
+        <button class="btn_header"><a href="./index.php">AGENDA</a></button>
         <button class="btn_header"><a href="./previsao.html">PREVISÃO</a></button>
     </header>
     <main>
-        <button id="openPopupBtn">Abrir Popup</button>
-
     <div id="popup" class="popup">
         <div class="popup-content">
             <span id="closePopupBtn" class="close">&times;</span>
             <h2>Adicionar Atividade</h2>
             <form action="" method="post">
-                <label for="">Título</label>
-            <input type="text">
-            <label for="">Horário</label>
-            <input type="time" name="" id="">
-            <input type="submit">
+                <input type="hidden" name="dia" id="diaSelecionado">
+                <label for="titulo">Título</label>
+                <input type="text" name="titulo" required>
+                <label for="horario">Horário</label>
+                <input type="time" name="horario" required>
+                <label for="descricao">Descrição</label>
+                <input type="text" name="descricao">
+                <input type="submit" value="Adicionar Tarefa">
             </form>
         </div>
     </div>
         <h1>Semana</h1>
         <div class="conteiner-semana">
             <div class="nav-semana">
-                <h2>30 Outubro | Quarta: </h2>
-                <button onclick=""></button>
+                <h2 id="Data-1"></h2>
+                <button class="add-task-btn"></button> 
+            </div>
+            <div class="conteudo-dia-semana">
+                <ul class="evento">
+                    <?php   
+                    
+                    ?>
+                </ul>
+            </div>
+        </div>
+        <div class="conteiner-semana">
+            <div class="nav-semana">
+                <h2 id="Data-2"></h2>
+                <button class="add-task-btn"></button>
             </div>
             <div class="conteudo-dia-semana"></div>
         </div>
         <div class="conteiner-semana">
             <div class="nav-semana">
-                <h2 id="Data-2">30 Outubro | Quarta: </h2>
-                <button onclick="">+</button>
+                <h2  id="Data-3"></h2>
+                <button class="add-task-btn"></button>
             </div>
             <div class="conteudo-dia-semana"></div>
         </div>
         <div class="conteiner-semana">
             <div class="nav-semana">
-                <h2  id="Data-3">30 Outubro | Quarta: </h2>
-                <button onclick="">+</button>
+                <h2  id="Data-4"></h2>
+                <button class="add-task-btn"></button>
             </div>
             <div class="conteudo-dia-semana"></div>
         </div>
         <div class="conteiner-semana">
             <div class="nav-semana">
-                <h2  id="Data-4">30 Outubro | Quarta: </h2>
-                <button onclick="">+</button>
+                <h2  id="Data-5"></h2>
+                <button class="add-task-btn"></button>
             </div>
             <div class="conteudo-dia-semana"></div>
         </div>
         <div class="conteiner-semana">
             <div class="nav-semana">
-                <h2  id="Data-5">30 Outubro | Quarta: </h2>
-                <button onclick="">+</button>
+                <h2  id="Data-6"></h2>
+                <button class="add-task-btn"></button>
             </div>
             <div class="conteudo-dia-semana"></div>
         </div>
         <div class="conteiner-semana">
             <div class="nav-semana">
-                <h2  id="Data-6">30 Outubro | Quarta: </h2>
-                <button onclick="">+</button>
-            </div>
-            <div class="conteudo-dia-semana"></div>
-        </div>
-        <div class="conteiner-semana">
-            <div class="nav-semana">
-                <h2  id="Data-7">30 Outubro | Quarta: </h2>
-                <button onclick="">+</button>
+                <h2  id="Data-7"></h2>
+                <button class="add-task-btn"></button>
             </div>
             <div class="conteudo-dia-semana"></div>
         </div>
 
     </main>
-    <script src="app.js"></script>
+    <script type="module" src="calendário.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
