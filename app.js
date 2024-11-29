@@ -11,7 +11,7 @@ document.getElementById('closePopupBtn').addEventListener('click', function() {
   document.getElementById('popup').style.display = 'none';
 });
 
-import { obterDiaDaSemanaEDiaDoMes } from './calendário.js'
+import { obterDiaDaSemanaEDiaDoMes } from './calendario.js'
   // Atualizar as datas nos cabeçalhos dos dias da semana
   for (let i = 1; i <= 7; i++) {
     document.getElementById(`Data-${i}`).innerHTML = obterDiaDaSemanaEDiaDoMes(i - 1, i);

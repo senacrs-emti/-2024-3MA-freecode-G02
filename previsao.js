@@ -1,6 +1,10 @@
 const options = {method: 'GET', headers: {accept: 'application/json'}};
 const PortoAlegre = { lat: -30.0277, lon: -51.2287 };
 
+import { obterDiaDaSemanaEDiaDoMes } from './calendario.js';
+document.getElementById(`Dia`).innerHTML = `${obterDiaDaSemanaEDiaDoMes(0,0)}a`;
+console.log(obterDiaDaSemanaEDiaDoMes(0,0))
+
 const dados = fetch('./data.json').then((response) => response.json())
     .then((json) => {
       let temperatura = json.data.values.temperature;
