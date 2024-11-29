@@ -39,35 +39,11 @@ foreach ($tarefas as $tarefa) {
         </div>
     </div>
         <h1>Semana</h1>
-        <div class="conteiner-semana">
-            <div class="nav-semana">
-                <h2 id="Data-1"></h2>
-                <button class="add-task-btn"></button> 
-            </div>
-            <div class="conteudo-dia-semana">
-            <ul class="evento">
-            <?php   
-                        if (!empty($tarefas)) {
-                            foreach($tarefas as $tarefa) {
-                                echo "<li class='li-task-block'>
-                                    <div class='task_block'>
-                                        <strong>{$tarefa['titulo']}</strong> <br> 
-                                        {$tarefa['descricao']} <br>
-                                    </div>
-                                </li>";
-                            }
-                        } else {
-                            echo "<li>Atividades do dia</li>";
-                        }
-                    ?>
-            </ul>
-            </div>
-        </div>
         <?php for ($i = 1; $i <= 7; $i++): ?>
     <div class="conteiner-semana">
         <div class="nav-semana">
             <h2 id="Data-<?php echo $i; ?>"></h2>
-            <button class="add-task-btn" data-dia="<?php echo $i; ?>">Adicionar Tarefa</button>
+            <button class="add-task-btn" data-dia="<?php echo $i; ?>"></button>
         </div>
         <div class="conteudo-dia-semana">
             <ul class="evento">
