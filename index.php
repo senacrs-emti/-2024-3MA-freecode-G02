@@ -1,4 +1,7 @@
-<?php include_once('functions.php');?>
+
+<?php include_once('functions.php');
+$tarefas = buscarTarefas();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,11 +39,22 @@
                 <button class="add-task-btn"></button> 
             </div>
             <div class="conteudo-dia-semana">
-                <ul class="evento">
-                    <?php   
-                    
+            <ul class="evento">
+            <?php   
+                        if (!empty($tarefas)) {
+                            foreach($tarefas as $tarefa) {
+                                echo "<li class='li-task-block'>
+                                    <div class='task_block'>
+                                        <strong>{$tarefa['titulo']}</strong> <br> 
+                                        {$tarefa['descricao']} <br>
+                                    </div>
+                                </li>";
+                            }
+                        } else {
+                            echo "<li>Nenhuma tarefa encontrada.</li>";
+                        }
                     ?>
-                </ul>
+            </ul>
             </div>
         </div>
         <div class="conteiner-semana">
@@ -87,7 +101,7 @@
         </div>
 
     </main>
-    <script type="module" src="calendário.js"></script>
+    <script type="module" src="calendario.js"></script>
     <script type="module" src="app.js"></script>
 </body>
 </html>
