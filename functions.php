@@ -14,14 +14,16 @@ if ($conn->connect_error) {
 
 // Função para adicionar tarefas ao banco de dados
 function obterTarefas() {
-    global $conn; 
+    global $conn;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $dia = $_POST['dia'];
+        $dia = $_POST['dia']; // Recebe o valor do dia do campo oculto
         $titulo = $_POST['titulo'];
         $horario = $_POST['horario'];
         $descricao = $_POST['descricao'];
+
         $sql = "INSERT INTO atividades (dia, titulo, horario, descricao) 
                 VALUES ('$dia', '$titulo', '$horario', '$descricao')";
+
 
         if ($conn->query($sql) === TRUE) {
             // Redireciona para a mesma página após a inserção

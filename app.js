@@ -1,14 +1,14 @@
 //popup:
 document.querySelectorAll('.add-task-btn').forEach(button => {
   button.addEventListener('click', function() {
-      const dia = this.getAttribute('data-dia'); // Captura o dia
+      const dia = this.getAttribute('data-dia'); // Captura o dia do botão clicado
       document.getElementById('diaSelecionado').value = dia; // Define o valor no campo oculto
-      document.getElementById('popup').style.display = 'flex';
+      document.getElementById('popup').style.display = 'flex'; // Exibe o popup
   });
 });
 
 document.getElementById('closePopupBtn').addEventListener('click', function() {
-  document.getElementById('popup').style.display = 'none';
+  document.getElementById('popup').style.display = 'none'; // Fecha o popup
 });
 
 import { obterDiaDaSemanaEDiaDoMes } from './calendario.js'

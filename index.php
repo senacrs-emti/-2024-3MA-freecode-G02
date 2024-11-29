@@ -2,6 +2,10 @@
 <?php include_once('functions.php');
 obterTarefas();
 $tarefas = buscarTarefas();
+$tarefasPorDia = [];
+foreach ($tarefas as $tarefa) {
+    $tarefasPorDia[$tarefa['dia']][] = $tarefa;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,48 +63,33 @@ $tarefas = buscarTarefas();
             </ul>
             </div>
         </div>
-        <div class="conteiner-semana">
-            <div class="nav-semana">
-                <h2 id="Data-2"></h2>
-                <button class="add-task-btn"></button>
-            </div>
-            <div class="conteudo-dia-semana"></div>
+        <?php for ($i = 1; $i <= 7; $i++): ?>
+    <div class="conteiner-semana">
+        <div class="nav-semana">
+            <h2 id="Data-<?php echo $i; ?>"></h2>
+            <button class="add-task-btn" data-dia="<?php echo $i; ?>">Adicionar Tarefa</button>
         </div>
-        <div class="conteiner-semana">
-            <div class="nav-semana">
-                <h2  id="Data-3"></h2>
-                <button class="add-task-btn"></button>
-            </div>
-            <div class="conteudo-dia-semana"></div>
+        <div class="conteudo-dia-semana">
+            <ul class="evento">
+                <?php 
+                    if (isset($tarefasPorDia[$i])) {
+                        foreach ($tarefasPorDia[$i] as $tarefa) {
+                            echo "<li class='li-task-block'>
+                                    <div class='task_block'>
+                                        <strong>{$tarefa['titulo']}</strong> <br> 
+                                        {$tarefa['descricao']} <br>
+                                    </div>
+                                </li>";
+                        }
+                    } else {
+                        echo "<li>Nenhuma tarefa encontrada.</li>";
+                    }
+                ?>
+            </ul>
         </div>
-        <div class="conteiner-semana">
-            <div class="nav-semana">
-                <h2  id="Data-4"></h2>
-                <button class="add-task-btn"></button>
-            </div>
-            <div class="conteudo-dia-semana"></div>
-        </div>
-        <div class="conteiner-semana">
-            <div class="nav-semana">
-                <h2  id="Data-5"></h2>
-                <button class="add-task-btn"></button>
-            </div>
-            <div class="conteudo-dia-semana"></div>
-        </div>
-        <div class="conteiner-semana">
-            <div class="nav-semana">
-                <h2  id="Data-6"></h2>
-                <button class="add-task-btn"></button>
-            </div>
-            <div class="conteudo-dia-semana"></div>
-        </div>
-        <div class="conteiner-semana">
-            <div class="nav-semana">
-                <h2  id="Data-7"></h2>
-                <button class="add-task-btn"></button>
-            </div>
-            <div class="conteudo-dia-semana"></div>
-        </div>
+    </div>
+<?php endfor; ?>
+
 
     </main>
     <script type="module" src="calendario.js"></script>
