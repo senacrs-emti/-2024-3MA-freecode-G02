@@ -53,7 +53,7 @@ $tarefas = buscarTarefas();
                                 </li>";
                             }
                         } else {
-                            echo "<li>Nenhuma tarefa encontrada.</li>";
+                            echo "<li>Atividades do dia</li>";
                         }
                     ?>
             </ul>
