@@ -14,23 +14,19 @@ if ($conn->connect_error) {
 
 // Função para adicionar tarefas ao banco de dados
 function obterTarefas() {
-    global $conn; // Acessa a variável $conn do escopo global
-
-    // Verifica se o formulário foi enviado (somente ao enviar dados via POST)
+    global $conn; 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Captura os dados do formulário
         $dia = $_POST['dia'];
         $titulo = $_POST['titulo'];
         $horario = $_POST['horario'];
         $descricao = $_POST['descricao'];
-
-        // Prepara a consulta SQL para inserção
         $sql = "INSERT INTO atividades (dia, titulo, horario, descricao) 
                 VALUES ('$dia', '$titulo', '$horario', '$descricao')";
 
-        // Executa a consulta SQL
         if ($conn->query($sql) === TRUE) {
-            echo "Tarefa adicionada com sucesso!";
+            // Redireciona para a mesma página após a inserção
+            header("Location: " . $_SERVER['PHP_SELF']); 
+            exit();
         } else {
             echo "Erro ao adicionar tarefa: " . $conn->error;
         }
@@ -39,20 +35,16 @@ function obterTarefas() {
 
 // Função para buscar tarefas do banco de dados
 function buscarTarefas() {
-    global $conn; // Acessa a variável $conn do escopo global
-
-    // Prepara a consulta SQL para buscar as tarefas
-    $sql = "SELECT * FROM atividades"; // Seleciona todas as tarefas
-    $result = $conn->query($sql); // Executa a consulta
+    global $conn; 
+    $sql = "SELECT * FROM atividades"; 
+    $result = $conn->query($sql); 
 
     if ($result->num_rows > 0) {
-        // Retorna os resultados como um array associativo
+        // Retorna os resultados como um array 
         return $result->fetch_all(MYSQLI_ASSOC);
     } else {
-        return []; // Retorna um array vazio se não houver resultados
+        return []; 
     }
 }
 
-// Fecha a conexão
-// Não feche a conexão aqui, pois ela deve ser mantida aberta até o final do script no index.php
 ?>
