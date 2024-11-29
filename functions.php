@@ -1,4 +1,3 @@
-
 <?php
 // Conexão com o banco de dados
 $servername = "localhost";
@@ -13,10 +12,11 @@ if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
+// Função para adicionar tarefas ao banco de dados
 function obterTarefas() {
-    global $conn; 
+    global $conn; // Acessa a variável $conn do escopo global
 
-    // Verifica se o formulário foi enviado
+    // Verifica se o formulário foi enviado (somente ao enviar dados via POST)
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Captura os dados do formulário
         $dia = $_POST['dia'];
@@ -41,14 +41,18 @@ function obterTarefas() {
 function buscarTarefas() {
     global $conn; // Acessa a variável $conn do escopo global
 
-
+    // Prepara a consulta SQL para buscar as tarefas
     $sql = "SELECT * FROM atividades"; // Seleciona todas as tarefas
     $result = $conn->query($sql); // Executa a consulta
 
     if ($result->num_rows > 0) {
+        // Retorna os resultados como um array associativo
         return $result->fetch_all(MYSQLI_ASSOC);
     } else {
-        return []; 
+        return []; // Retorna um array vazio se não houver resultados
     }
 }
+
+// Fecha a conexão
+// Não feche a conexão aqui, pois ela deve ser mantida aberta até o final do script no index.php
 ?>
