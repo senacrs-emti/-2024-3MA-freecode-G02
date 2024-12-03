@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 function obterTarefas() {
     global $conn;
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $dia = $_POST['dia']; // Recebe o valor do dia do campo oculto
+        $dia = $_POST['data-dia']; // Recebe o valor do dia do campo oculto
         $titulo = $_POST['titulo'];
         $horario = $_POST['horario'];
         $descricao = $_POST['descricao'];

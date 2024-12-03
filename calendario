@@ -4,7 +4,7 @@ USE tarefasCalendario;
 
 CREATE TABLE atividades (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    dia DATE NOT NULL,
+    dia INT NOT NULL,
     titulo VARCHAR(255) NOT NULL,
     horario TIME NOT NULL,
     descricao TEXT

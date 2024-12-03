@@ -27,7 +27,7 @@ foreach ($tarefas as $tarefa) {
             <span id="closePopupBtn" class="close">&times;</span>
             <h2>Adicionar Atividade</h2>
             <form action="" method="post">
-                <input type="hidden" name="dia" id="diaSelecionado">
+                <input type="hidden" name=data-dia id="diaSelecionado">
                 <label for="titulo">Título</label>
                 <input type="text" name="titulo" required>
                 <label for="horario">Horário</label>
