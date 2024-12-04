@@ -27,6 +27,6 @@ public class MainActivity extends AppCompatActivity {
         webView.addJavascriptInterface(new WebAppInterface(this), "Android");
 
         // Carregar o arquivo HTML
-        webView.loadUrl("file:///android_asset/index.html");  // Alterar para o caminho correto
+        webView.loadUrl("file:///android_asset/index.html");
     }
 }

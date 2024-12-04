@@ -5,96 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CliMinder</title>
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="calendario.js"></script>
-    <script type="text/javascript">
-        // Função para adicionar uma tarefa no banco de dados
-        function addTaskToDB(title, time, description, day) {
-            if (window.Android) {
-                // Chama o método addTask da interface Java
-                window.Android.addTask(title, time, description, day);
-            }
-        }
-
-        // Função para exibir as tarefas de um dia específico
-        function loadTasks(day) {
-            if (window.Android) {
-                // Chama o método getTasks da interface Java
-                const tasks = window.Android.getTasks(day);
-                const tasksArray = JSON.parse(tasks); // Converte o JSON retornado em um array
-                let tasksHtml = '';
-                tasksArray.forEach(task => {
-                    tasksHtml += `<li><strong>${task.title}</strong> - ${task.time}<br>${task.description}</li>`;
-                });
-                document.getElementById("tasksList").innerHTML = tasksHtml;
-            }
-        }
-
-        // Função para exibir os 7 dias da semana dinamicamente
-        function loadWeek() {
-            const diasSemana = [];
-            for (let i = 0; i < 7; i++) {
-                const diaSemana = obterDiaDaSemanaEDiaDoMes(i);
-                diasSemana.push(diaSemana);
-            }
-            const daysContainer = document.getElementById("weekDays");
-            diasSemana.forEach((dia, index) => {
-                const dayButton = document.createElement('button');
-                dayButton.className = "day-button";
-                dayButton.textContent = dia;
-                dayButton.onclick = () => showDayTasks(index + 1); // Passa o dia da semana
-                daysContainer.appendChild(dayButton);
-            });
-        }
-
-        // Função para exibir as tarefas de um dia específico ao clicar
-        function showDayTasks(day) {
-            document.getElementById("tasksList").innerHTML = ''; // Limpa tarefas anteriores
-            loadTasks(day);
-            document.getElementById("daySelected").textContent = `Tarefas para o Dia ${day}`;
-            document.getElementById("daySelected").dataset.day = day;
-        }
-
-        // Função para adicionar uma tarefa para o dia selecionado
-        function addTaskForSelectedDay() {
-            const day = document.getElementById("daySelected").dataset.day;
-            const title = document.getElementById("taskTitle").value;
-            const time = document.getElementById("taskTime").value;
-            const description = document.getElementById("taskDescription").value;
-
-            if (title && time && description) {
-                addTaskToDB(title, time, description, day);
-                loadTasks(day);  // Recarrega as tarefas após adicionar
-            } else {
-                alert("Preencha todos os campos!");
-            }
-        }
-
-        window.onload = loadWeek;  // Carrega os dias da semana ao carregar a página
-    </script>
+    <script src="script.js" defer></script>
 </head>
 <body>
 <header>
     <button class="btn_header"><a href="./index.html">AGENDA</a></button>
     <button class="btn_header"><a href="./previsao.html">PREVISÃO</a></button>
 </header>
+
 <main>
-    <h1>Semana</h1>
-    <div id="weekDays"></div> <!-- Exibe os 7 dias da semana -->
+    <h1>Agenda - Semana</h1>
 
-    <!-- Exibe as tarefas do dia selecionado -->
-    <div id="tasksContainer">
-        <h2 id="daySelected" data-day=""></h2>
-        <ul id="tasksList"></ul>
+    <!-- Navegação pelos dias da semana -->
+    <div class="conteudo-dia-semana">
+        <div class="conteiner-semana">
+            <h2 id="Data-1">Segunda-feira</h2>
+            <button class="add-task-btn" data-dia="1"></button>
+        </div>
+        <div class="conteiner-semana">
+            <h2 id="Data-2">Terça-feira</h2>
+            <button class="add-task-btn" data-dia="2"></button>
+        </div>
+        <div class="conteiner-semana">
+            <h2 id="Data-3">Quarta-feira</h2>
+            <button class="add-task-btn" data-dia="3"></button>
+        </div>
+        <div class="conteiner-semana">
+            <h2 id="Data-4">Quinta-feira</h2>
+            <button class="add-task-btn" data-dia="4"></button>
+        </div>
+        <div class="conteiner-semana">
+            <h2 id="Data-5">Sexta-feira</h2>
+            <button class="add-task-btn" data-dia="5"></button>
+        </div>
+        <div class="conteiner-semana">
+            <h2 id="Data-6">Sábado</h2>
+            <button class="add-task-btn" data-dia="6"></button>
+        </div>
+        <div class="conteiner-semana">
+            <h2 id="Data-7">Domingo</h2>
+            <button class="add-task-btn" data-dia="7"></button>
+        </div>
     </div>
 
-    <!-- Formulário para adicionar tarefas -->
-    <div id="taskForm">
-        <h3>Adicionar Tarefa</h3>
-        <input type="text" id="taskTitle" placeholder="Título da tarefa" required>
-        <input type="time" id="taskTime" required>
-        <input type="text" id="taskDescription" placeholder="Descrição" required>
-        <button onclick="addTaskForSelectedDay()">Adicionar Tarefa</button>
+    <!-- Popup para adicionar tarefas -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="closePopupBtn" class="close">&times;</span>
+            <h2>Adicionar Atividade</h2>
+            <form id="formAddTask">
+                <input type="hidden" id="diaSelecionado">
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" required>
+                <label for="horario">Horário</label>
+                <input type="time" id="horario" required>
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao">
+                <input type="submit" value="Adicionar Tarefa">
+            </form>
+        </div>
     </div>
+
+    <!-- Lista de tarefas -->
+    <div id="taskList"></div>
 </main>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ao clicar no botão para adicionar tarefa
+            document.querySelectorAll('.add-task-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const dia = this.getAttribute('data-dia'); // Captura o dia
+                    document.getElementById('diaSelecionado').value = dia;
+                    document.getElementById('popup').style.display = 'flex';
+                });
+            });
+
+            // Fechar o popup
+            document.getElementById('closePopupBtn').addEventListener('click', function() {
+                document.getElementById('popup').style.display = 'none';
+            });
+
+            // Adicionar a tarefa ao clicar no botão do formulário
+            document.getElementById('formAddTask').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const dia = document.getElementById('diaSelecionado').value;
+                const titulo = document.getElementById('titulo').value;
+                const horario = document.getElementById('horario').value;
+                const descricao = document.getElementById('descricao').value;
+
+                // Chamar a função do Java para adicionar a tarefa
+                Android.addTask(titulo, horario, descricao, parseInt(dia));
+                document.getElementById('popup').style.display = 'none';
+                loadTasks(dia);  // Atualizar a lista de tarefas
+            });
+
+            // Função para carregar tarefas de um dia específico
+            function loadTasks(dia) {
+                // Chama a função JavaScript do Android para obter as tarefas daquele dia
+                const tasksJson = Android.getTasks(dia);
+                const tasks = JSON.parse(tasksJson);
+
+                const taskList = document.getElementById('taskList');
+                taskList.innerHTML = ''; // Limpar a lista antes de adicionar novas tarefas
+
+                // Adiciona as tarefas na interface
+                tasks.forEach(task => {
+                    const taskElement = document.createElement('div');
+                    taskElement.classList.add('task-item');
+                    taskElement.innerHTML = `
+                        <h3>${task.title} - ${task.time}</h3>
+                        <p>${task.description}</p>
+                    `;
+                    taskList.appendChild(taskElement);
+                });
+            }
+
+            // Carregar as tarefas de cada dia ao carregar a página
+            for (let i = 1; i <= 7; i++) {
+                loadTasks(i);
+            }
+        });
+    </script>
 </body>
 </html>

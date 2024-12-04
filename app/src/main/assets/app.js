@@ -1,46 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CliMinder</title>
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript">
-        // Função para adicionar uma tarefa no banco de dados
-        function addTaskToDB(title, time, description, day) {
-            if (window.Android) {
-                // Chama o método addTask da interface Java
-                window.Android.addTask(title, time, description, day);
-            }
-        }
+// Script para abrir o popup
+document.querySelectorAll('.add-task-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const dia = this.getAttribute('data-dia'); // Captura o dia do botão clicado
+        document.getElementById('diaSelecionado').value = dia; // Define o valor no campo oculto
+        document.getElementById('popup').style.display = 'flex'; // Exibe o popup
+    });
+});
 
-        // Função para exibir as tarefas de um dia específico
-        function loadTasks(day) {
-            if (window.Android) {
-                // Chama o método getTasks da interface Java
-                const tasks = window.Android.getTasks(day);
-                const tasksArray = JSON.parse(tasks); // Converte o JSON retornado em um array
-                let tasksHtml = '';
-                tasksArray.forEach(task => {
-                    tasksHtml += `<li><strong>${task.title}</strong> - ${task.time}<br>${task.description}</li>`;
-                });
-                document.getElementById("tasksList").innerHTML = tasksHtml;
-            }
-        }
-    </script>
-</head>
-<body>
-    <header>
-        <button class="btn_header"><a href="./index.html">AGENDA</a></button>
-        <button class="btn_header"><a href="./previsao.html">PREVISÃO</a></button>
-    </header>
-    <main>
-        <h1>Semana</h1>
-        <div>
-            <button onclick="addTaskToDB('Tarefa 1', '12:00', 'Descrição da tarefa', 1)">Adicionar Tarefa</button>
-        </div>
-        <ul id="tasksList"></ul>
-        <button onclick="loadTasks(1)">Carregar Tarefas para o Dia 1</button>
-    </main>
-</body>
-</html>
+document.getElementById('closePopupBtn').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'none'; // Fecha o popup
+});
+
+// Enviar o formulário para o servidor usando AJAX
+document.getElementById('formAddTask').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede o comportamento padrão do formulário
+
+    const titulo = document.getElementById('titulo').value;
+    const horario = document.getElementById('horario').value;
+    const descricao = document.getElementById('descricao').value;
+    const dia = document.getElementById('diaSelecionado').value;
+
+    // Enviar os dados para o backend usando AJAX
+    fetch('adicionar_tarefa.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `titulo=${titulo}&horario=${horario}&descricao=${descricao}&dia=${dia}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Tarefa adicionada com sucesso!');
+        document.getElementById('popup').style.display = 'none'; // Fecha o popup
+        location.reload(); // Recarrega a página para mostrar as tarefas atualizadas
+    })
+    .catch(error => console.error('Erro ao adicionar tarefa:', error));
+});
