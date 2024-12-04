@@ -19,7 +19,6 @@ foreach ($tarefas as $tarefa) {
     <header>
         <button class="btn_header"><a href="./index.php">AGENDA</a></button>
         <button class="btn_header"><a href="./previsao.html">PREVISÃO</a></button>
-        
     </header>
     <main>
     <div id="popup" class="popup">
@@ -52,13 +51,13 @@ foreach ($tarefas as $tarefa) {
                         foreach ($tarefasPorDia[$i] as $tarefa) {
                             echo "<li class='li-task-block'>
                                     <div class='task_block'>
-                                        <strong>{$tarefa['titulo']}</strong> <br> 
-                                        {$tarefa['descricao']} <br>
+                                        <p class='text-task-block'><strong>{$tarefa['titulo']}</strong> <br> 
+                                        {$tarefa['descricao']} <br></p>
                                     </div>
                                 </li>";
                         }
                     } else {
-                        echo "<li>Nenhuma tarefa encontrada.</li>";
+                        echo "<li class='li-task-bloc'>Adicione uma tarefa</li>";
                     }
                 ?>
             </ul>

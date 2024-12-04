@@ -115,6 +115,10 @@ h1{
     font-size: 20px;
     cursor: pointer;
 }
+.text-task-block{
+    color: aliceblue;
+
+}
 
 /* PÁGINA PREVISÃO*/
 #menu-prev{
@@ -169,3 +173,4 @@ h1{
 .evento{
     margin: 20px;
 }
+
