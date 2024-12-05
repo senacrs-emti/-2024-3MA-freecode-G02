@@ -5,9 +5,9 @@ const PortoAlegre = { lat: -30.0277, lon: -51.2287 };
 
 import { obterDiaDaSemanaEDiaDoMes } from './calendario.js';
 
-// Atualizar o dia no painel
-document.getElementById(`Dia`).innerHTML = `${obterDiaDaSemanaEDiaDoMes(0,0)}`;
-console.log(obterDiaDaSemanaEDiaDoMes(0,0))
+// Atualizar o dia no painel com a data atual
+document.getElementById(`Dia`).innerHTML = `${obterDiaDaSemanaEDiaDoMes(0)}`;
+console.log(obterDiaDaSemanaEDiaDoMes(0));
 
 // Fetch do arquivo JSON contendo os dados de previsão do tempo
 const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSON
@@ -21,6 +21,9 @@ const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSO
       let umidade = diaSelecionado.values.humidity;
       let ventos = diaSelecionado.values.windSpeed;
       let prevChuva = diaSelecionado.values.precipitationProbability;
+
+      // Atualizando o título do dia no painel usando a função do calendário
+      document.getElementById('Dia').innerHTML = `${obterDiaDaSemanaEDiaDoMes(diaIndex)}`;
 
       // Exibindo os dados no console
       console.log('Raios UV: ', raiosUV);  // Para o nível de UV, você precisará ter esses dados ou determinar um valor
