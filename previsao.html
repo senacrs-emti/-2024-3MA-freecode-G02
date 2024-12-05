@@ -12,29 +12,34 @@
         <button class="btn_header"><a href="./previsao.html">PREVISÃO</a></button>
     </header>
     <div id="semana-prev">
-        <button id="dia-0"><h3>HOJE</h3></button>
-        <button id="dia-1"><h3>AMAN.</h3></button>
-        <button id="dia-2"><h3>EM 2 DIAS</h3></button>
-        <button id="dia-3"><h3>EM 3 DIAS</h3></button>
-        <button id="dia-4"><h3>EM 4 DIAS</h3></button>
-        <button id="dia-5"><h3>EM 5 DIAS</h3></button>
-        <button id="dia-6"><h3>EM 6 DIAS</h3></button>
+        <button id="dia-0" class="semana-prev-nav"><h3>HOJE</h3></button>
+        <button id="dia-1" class="semana-prev-nav"><h3>AMANHÃ</h3></button>
+        <button id="dia-2" class="semana-prev-nav"><h3>EM 2 DIAS</h3></button>
+        <button id="dia-3" class="semana-prev-nav"><h3>EM 3 DIAS</h3></button>
+        <button id="dia-4" class="semana-prev-nav"><h3>EM 4 DIAS</h3></button>
+        <button id="dia-5" class="semana-prev-nav"><h3>EM 5 DIAS</h3></button>
     </div>
     <div id="menu-prev">
         <div id="menu-painel">
-            <img src="" alt="">
-            <h2 class="txt-branco" id="Dia"></h2>
-            <p id="painel-menu-prev" class="txt-branco"></p>
+            <div id="info-tempo">
+                <h2 class="txt-branco" id="Dia"></h2>
+                <p id="painel-menu-prev" class="txt-branco"></p>
+            </div>
+            <div id="info-tempo2">
+                <img id="icone-prev" src="./chuva.png" alt="Chuva">
+                <p class="txt-branco">Tempo chuvoso</p>
+            </div>
         </div>
         <div id="menu-dados">
             <div class="menu-content"><h3 class="txt-branco">Temperatura:</h3><p class="txt-branco" id="temperatura">XC°</p></div>
-            <div class="menu-content"><h3 class="txt-branco">Raios-UV:</h3><p class="txt-branco"  id="Raios-UV">Alto</p></div>
             <div class="menu-content"><h3 class="txt-branco">Ventos Km/h:</h3><p class="txt-branco" id="Velocidade-vento">50km/h</p></div>
             <div class="menu-content"><h3 class="txt-branco">Umidade:</h3><p class="txt-branco" id="Umidade">X%</p></div>
             <div class="menu-content"><h3 class="txt-branco">Precipitação:</h3><p class="txt-branco" id="Prev-Chuva">X%</p></div>
-            <div class="menu-content"><h3 class="txt-branco">Sla:</h3><p class="txt-branco" id="Prev-Branco"></p></div>
         </div>
     </div>
+    <footer>
+        <p class="footer-text">Baseado na API Tomorrow.io</p>
+    </footer>
     <script type="module" src="previsao.js"></script> 
     <script type="module" src="calendario.js"></script>
 </body>

@@ -24,6 +24,17 @@ header{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 /*AGENDA INDEX*/
+.add-task-btn{
+    width: 25px;
+    height: 25px;
+    background-color:transparent ;
+    background-image: url(./03-20.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    border:none;
+    display: flex;
+    align-self: center;
+}
 .conteudo-dia-semana{
     background-color: #1F1B49;
     width: 90%;
@@ -32,30 +43,15 @@ header{
     justify-self: center;
     border-radius: 15px;
 }
+.semana-prev-nav{
+    width: 15%;
+    background-color: transparent;
+    border: none;
+}
 h1{
     margin: 30px;
     margin-bottom: 20px;
 }
-.conteiner-semana h2{
-    display: flex;
-    align-self: center;
-    justify-self: flex-end;
-    justify-content: center;
-}
-.conteiner-semana button{
-    width: 45px;
-    height: 45px;
-    margin-left: 30px;
-    border: none;
-    background-color: transparent;
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    background-image: url(./03-20.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60px;
-}   
 .nav-semana{
     display: flex;
     justify-content: center;
@@ -115,12 +111,18 @@ h1{
     font-size: 20px;
     cursor: pointer;
 }
-.text-task-block{
-    color: aliceblue;
 
+.evento{
+    list-style: none;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
 }
-
 /* PÁGINA PREVISÃO*/
+#icone-prev{
+    width: 100px;
+    height: 100px;
+}
 #menu-prev{
     background-color: #1F1B49;
     width: 90%;
@@ -141,11 +143,6 @@ h1{
     margin-top: 25px;
     margin-bottom: 15px;
 }
-#semana-prev button{
-    width: 50px;
-    border: none;
-    background-color: transparent;
-}
 .nav-semana{
     display: flex;
     flex-direction: row;
@@ -154,7 +151,6 @@ h1{
     color: aliceblue;
 }
 .menu-content{
-    border: 1px solid black;
     width: 49%;
     height: 100px;
 }
@@ -163,14 +159,88 @@ h1{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 10px;
 }
 #menu-painel{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-}
-.evento{
-    margin: 20px;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
 }
 
+
+footer {
+    background-color: #333; /* Cor de fundo escura */
+    color: white;            /* Texto branco */
+    text-align: center;      /* Alinhar o texto ao centro */
+    padding: 20px 0;         /* Espaçamento em cima e embaixo */
+    width: 100%;
+    margin-top: 20px;
+}
+
+.footer-text {
+    font-size: 14px;         /* Tamanho do texto */
+    margin: 0;               /* Remove margem do parágrafo */
+}
+/* Adicionando estilo para as tarefas dentro da div do dia */
+.conteudo-dia-semana {
+    background-color: #1F1B49;
+    width: 90%;
+    height: auto; 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    justify-content: flex-start; 
+    gap: 10px; 
+    border-radius: 15px;
+    padding: 10px; 
+    overflow: hidden; 
+}
+
+/* Estilo das tarefas (blocos de tarefa) */
+.li-task-block {
+    list-style: none;
+    width: 100%; 
+    background-color: #333; 
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: aliceblue;
+}
+
+/* Estilo do bloco de texto dentro da tarefa */
+.text-task-block {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Estilo do botão de adicionar tarefa */
+.add-task-btn {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    background-image: url(./03-20.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    border: none;
+    display: flex;
+    align-self: center;
+}
+
+/* Restringindo o tamanho das tarefas para caberem melhor */
+@media (max-width: 768px) {
+    .li-task-block {
+        width: 100%; /* Para telas menores, as tarefas ocuparão 100% da largura disponível */
+    }
+}
+
+@media (max-width: 480px) {
+    .conteudo-dia-semana {
+        flex-direction: column; /* Para telas muito pequenas, as tarefas ficam em coluna */
+        align-items: center; /* Alinha as tarefas ao centro */
+    }
+}

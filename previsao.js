@@ -17,7 +17,6 @@ const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSO
     function atualizarPainel(diaIndex) {
       const diaSelecionado = json.data.timelines[0].intervals[diaIndex];
       let temperatura = diaSelecionado.values.temperature;
-      let raiosUV = 'Alto';  // Exemplo fixo, pois você não tem esse dado no seu JSON atual
       let umidade = diaSelecionado.values.humidity;
       let ventos = diaSelecionado.values.windSpeed;
       let prevChuva = diaSelecionado.values.precipitationProbability;
@@ -26,31 +25,47 @@ const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSO
       document.getElementById('Dia').innerHTML = `${obterDiaDaSemanaEDiaDoMes(diaIndex)}`;
 
       // Exibindo os dados no console
-      console.log('Raios UV: ', raiosUV);  // Para o nível de UV, você precisará ter esses dados ou determinar um valor
       console.log('Temperatura:', temperatura);  // Temperatura em °C
       console.log('Umidade: ', umidade);  // Umidade em %
       console.log('Ventos: ', ventos * 3.6);  // Convertendo de m/s para km/h
       console.log('Previsão de chuva: ', prevChuva);  // Probabilidade de precipitação
 
       // Atualizando o painel com os dados do dia selecionado
-      document.getElementById("Raios-UV").innerHTML = `${raiosUV}`;
       document.getElementById("temperatura").innerHTML = ` ${temperatura} °C`;
       document.getElementById("Umidade").innerHTML = `${umidade}%`;
       document.getElementById("Velocidade-vento").innerHTML = `${ventos * 3.6} Km/h`;
       document.getElementById("Prev-Chuva").innerHTML = `${prevChuva}%`; 
+
+           // Atualizando a imagem com base no tipo de precipitação
+     const weatherImage = document.getElementById('icone-prev');
+
+     // Condicional para escolher a imagem de acordo com o tipo de precipitação
+     if (prevChuva > 80) {
+       weatherImage.src = './chuva.png';  // Imagem de chuva
+       weatherImage.alt = 'Tempo chuvoso';
+       document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo chuvoso';
+     } else if (prevChuva < 80 || prevChuva > 40) {
+       weatherImage.src = './nublado.png';  // Imagem de nublado
+       weatherImage.alt = 'Tempo nublado';
+       document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo nublado';
+     } else{
+       weatherImage.src = './ensolarado.png';  // Imagem de sol
+       weatherImage.alt = 'Tempo ensolarado';
+       document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo ensolarado';
+     };
     }
 
     // Inicializando com o primeiro dia (Segunda-feira)
     atualizarPainel(0);
 
     // Adicionando eventos de clique nos botões dos dias
-    document.getElementById("dia-0").addEventListener("click", () => atualizarPainel(0));  // Segunda-feira
-    document.getElementById("dia-1").addEventListener("click", () => atualizarPainel(1));  // Terça-feira
-    document.getElementById("dia-2").addEventListener("click", () => atualizarPainel(2));  // Quarta-feira
-    document.getElementById("dia-3").addEventListener("click", () => atualizarPainel(3));  // Quinta-feira
-    document.getElementById("dia-4").addEventListener("click", () => atualizarPainel(4));  // Sexta-feira
-    document.getElementById("dia-5").addEventListener("click", () => atualizarPainel(5));  // Sábado
-    document.getElementById("dia-6").addEventListener("click", () => atualizarPainel(6));  // Domingo
+    document.getElementById("dia-0").addEventListener("click", () => atualizarPainel(0)); 
+    document.getElementById("dia-1").addEventListener("click", () => atualizarPainel(1)); 
+    document.getElementById("dia-2").addEventListener("click", () => atualizarPainel(2)); 
+    document.getElementById("dia-3").addEventListener("click", () => atualizarPainel(3));  
+    document.getElementById("dia-4").addEventListener("click", () => atualizarPainel(4));  
+    document.getElementById("dia-5").addEventListener("click", () => atualizarPainel(5)); 
+
   })
   .catch((error) => {
     console.error("Erro ao carregar o arquivo JSON:", error);

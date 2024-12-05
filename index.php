@@ -67,6 +67,9 @@ foreach ($tarefas as $tarefa) {
 
 
     </main>
+    <footer>
+    <p class="footer-text">Baseado na API Tomorrow.io</p>
+</footer>
     <script type="module" src="calendario.js"></script>
     <script type="module" src="app.js"></script>
 </body>
