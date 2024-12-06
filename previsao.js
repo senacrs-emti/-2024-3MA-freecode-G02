@@ -5,15 +5,13 @@ const PortoAlegre = { lat: -30.0277, lon: -51.2287 };
 
 import { obterDiaDaSemanaEDiaDoMes } from './calendario.js';
 
-// Atualizar o dia no painel com a data atual
 document.getElementById(`Dia`).innerHTML = `${obterDiaDaSemanaEDiaDoMes(0)}`;
 console.log(obterDiaDaSemanaEDiaDoMes(0));
 
-// Fetch do arquivo JSON contendo os dados de previsão do tempo
-const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSON
+
+const dados = fetch('./data.json')  
   .then((response) => response.json())
   .then((json) => {
-    // Função para atualizar os dados do painel com base no índice do dia
     function atualizarPainel(diaIndex) {
       const diaSelecionado = json.data.timelines[0].intervals[diaIndex];
       let temperatura = diaSelecionado.values.temperature;
@@ -21,7 +19,7 @@ const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSO
       let ventos = diaSelecionado.values.windSpeed;
       let prevChuva = diaSelecionado.values.precipitationProbability;
 
-      // Atualizando o título do dia no painel usando a função do calendário
+
       document.getElementById('Dia').innerHTML = `${obterDiaDaSemanaEDiaDoMes(diaIndex)}`;
 
       // Exibindo os dados no console
@@ -30,35 +28,33 @@ const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSO
       console.log('Ventos: ', ventos * 3.6);  // Convertendo de m/s para km/h
       console.log('Previsão de chuva: ', prevChuva);  // Probabilidade de precipitação
 
-      // Atualizando o painel com os dados do dia selecionado
+
       document.getElementById("temperatura").innerHTML = ` ${temperatura} °C`;
       document.getElementById("Umidade").innerHTML = `${umidade}%`;
       document.getElementById("Velocidade-vento").innerHTML = `${ventos * 3.6} Km/h`;
       document.getElementById("Prev-Chuva").innerHTML = `${prevChuva}%`; 
 
-           // Atualizando a imagem com base no tipo de precipitação
      const weatherImage = document.getElementById('icone-prev');
 
-     // Condicional para escolher a imagem de acordo com o tipo de precipitação
      if (prevChuva > 80) {
-       weatherImage.src = './chuva.png';  // Imagem de chuva
+       weatherImage.src = './chuva.png'; 
        weatherImage.alt = 'Tempo chuvoso';
        document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo chuvoso';
      } else if (prevChuva < 80 || prevChuva > 40) {
-       weatherImage.src = './nublado.png';  // Imagem de nublado
+       weatherImage.src = './nublado.png';  
        weatherImage.alt = 'Tempo nublado';
        document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo nublado';
      } else{
-       weatherImage.src = './ensolarado.png';  // Imagem de sol
+       weatherImage.src = './ensolarado.png';  
        weatherImage.alt = 'Tempo ensolarado';
        document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo ensolarado';
      };
     }
 
-    // Inicializando com o primeiro dia (Segunda-feira)
+
     atualizarPainel(0);
 
-    // Adicionando eventos de clique nos botões dos dias
+
     document.getElementById("dia-0").addEventListener("click", () => atualizarPainel(0));  // Segunda-feira
     document.getElementById("dia-1").addEventListener("click", () => atualizarPainel(1));  // Terça-feira
     document.getElementById("dia-2").addEventListener("click", () => atualizarPainel(2)); 
