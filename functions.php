@@ -48,5 +48,26 @@ function buscarTarefas() {
         return []; 
     }
 }
+// Função para deletar uma tarefa
+function deletarTarefa() {
+    global $conn;
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deletar'])) {
+        $tarefa_id = $_POST['tarefa_id'];  // O ID da tarefa a ser excluída
+
+        $sql = "DELETE FROM atividades WHERE id = $tarefa_id";
+
+        if ($conn->query($sql) === TRUE) {
+            // Redireciona para a mesma página após a exclusão
+            header("Location: " . $_SERVER['PHP_SELF']); 
+            exit();
+        } else {
+            echo "Erro ao excluir tarefa: " . $conn->error;
+        }
+    }
+}
+
+// Chama a função de deletar tarefa
+deletarTarefa();
+
 
 ?>

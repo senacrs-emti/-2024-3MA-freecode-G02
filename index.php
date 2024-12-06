@@ -58,6 +58,10 @@ foreach ($tarefas as $tarefa) {
                                         <img class='icone-task' src='./chuva.png' alt='Chuva'>
                                         <p class='txt-branco'>Tempo chuvoso</p>
                                     </div>
+                                    <form action='' method='post'>
+                            <input type='hidden' name='tarefa_id' value='{$tarefa['id']}'>
+                            <button type='submit' name='deletar' class='delete-btn'>Deletar</button>
+                        </form>
                                 </li>";
                         }
                     } else {
