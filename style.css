@@ -3,14 +3,12 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-/*HEADER*/
 header{
     width: 100%;
     height: 10%;
     background-color: #8a73d7;
     
 }
-
 .btn_header{
     width: 45vw;
     height: 15vh;
@@ -67,7 +65,7 @@ h1{
     cursor: pointer;
 }
 .popup{
-    display: none; /* Escondido por padrão */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -77,7 +75,6 @@ h1{
     justify-content: center;
     align-items: center;
 }
-
 .popup-content {
     height: 280px;
     background-image: linear-gradient(rgb(112, 112, 112),rgb(39, 39, 39), black, black );
@@ -86,8 +83,7 @@ h1{
     padding: 20px;
     border-radius: 5px;
     width: 300px;
-    text-align: center;
-    
+    text-align: center;   
 }
 .popup-content input{
     border-radius: 5px;
@@ -116,7 +112,6 @@ h1{
     font-size: 20px;
     cursor: pointer;
 }
-
 .evento{
     list-style: none;
     margin: 20px;
@@ -179,19 +174,19 @@ h1{
 
 
 footer {
-    background-color: #333; /* Cor de fundo escura */
-    color: white;            /* Texto branco */
-    text-align: center;      /* Alinhar o texto ao centro */
-    padding: 20px 0;         /* Espaçamento em cima e embaixo */
+    background-color: #333; 
+    color: white;            
+    text-align: center;      
+    
+    padding: 20px 0;        
     width: 100%;
     margin-top: 20px;
 }
 
 .footer-text {
-    font-size: 14px;         /* Tamanho do texto */
-    margin: 0;               /* Remove margem do parágrafo */
+    font-size: 14px;         
+    margin: 0;               
 }
-/* Adicionando estilo para as tarefas dentro da div do dia */
 .conteudo-dia-semana {
     background-color: #1F1B49;
     width: 90%;
@@ -206,7 +201,6 @@ footer {
     overflow: hidden; 
 }
 
-/* Estilo das tarefas (blocos de tarefa) */
 .li-task-block {
     list-style: none;
     width: 100%; 
@@ -219,15 +213,11 @@ footer {
     justify-content: center;
     color: aliceblue;
 }
-
-/* Estilo do bloco de texto dentro da tarefa */
 .text-task-block {
     font-size: 14px;
     line-height: 1.5;
     margin: 0;
 }
-
-/* Estilo do botão de adicionar tarefa */
 .add-task-btn {
     width: 25px;
     height: 25px;
@@ -240,16 +230,16 @@ footer {
     align-self: center;
 }
 
-/* Restringindo o tamanho das tarefas para caberem melhor */
+
 @media (max-width: 768px) {
     .li-task-block {
-        width: 100%; /* Para telas menores, as tarefas ocuparão 100% da largura disponível */
+        width: 100%; 
     }
 }
 
 @media (max-width: 480px) {
     .conteudo-dia-semana {
-        flex-direction: column; /* Para telas muito pequenas, as tarefas ficam em coluna */
-        align-items: center; /* Alinha as tarefas ao centro */
+        flex-direction: column; 
+        align-items: center;
     }
 }

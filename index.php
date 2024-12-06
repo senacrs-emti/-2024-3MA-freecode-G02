@@ -52,7 +52,7 @@ foreach ($tarefas as $tarefa) {
                             echo "<li class='li-task-block'>
                                     <div class='task_block'>
                                         <p class='text-task-block'><strong>{$tarefa['titulo']}</strong> <br> 
-                                        {$tarefa['descricao']} <br></p>
+                                        {$tarefa['descricao']} <br>{$tarefa['horario']}</p>
                                     </div>
                                     <div class='info-tempo-task'>
                                         <img class='icone-task' src='./chuva.png' alt='Chuva'>
