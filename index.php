@@ -54,6 +54,10 @@ foreach ($tarefas as $tarefa) {
                                         <p class='text-task-block'><strong>{$tarefa['titulo']}</strong> <br> 
                                         {$tarefa['descricao']} <br></p>
                                     </div>
+                                    <div class='info-tempo-task'>
+                                        <img class='icone-task' src='./chuva.png' alt='Chuva'>
+                                        <p class='txt-branco'>Tempo chuvoso</p>
+                                    </div>
                                 </li>";
                         }
                     } else {
