@@ -44,11 +44,12 @@ const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSO
        weatherImage.src = './chuva.png';  // Imagem de chuva
        weatherImage.alt = 'Tempo chuvoso';
        document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo chuvoso';
-     } else if (prevChuva < 80 || prevChuva > 40) {
-       weatherImage.src = './nublado.png';  // Imagem de nublado
-       weatherImage.alt = 'Tempo nublado';
-       document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo nublado';
-     } else{
+     } else if (prevChuva >= 40 && prevChuva <= 80) {
+      weatherImage.src = './nublado.png';
+      weatherImage.alt = 'Tempo nublado';
+      document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo nublado';
+    }
+     else{
        weatherImage.src = './ensolarado.png';  // Imagem de sol
        weatherImage.alt = 'Tempo ensolarado';
        document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo ensolarado';
@@ -59,7 +60,7 @@ const dados = fetch('./data.json')  // Aqui você faz o fetch do seu arquivo JSO
     atualizarPainel(0);
 
     // Adicionando eventos de clique nos botões dos dias
-    document.getElementById("dia-0").addEventListener("click", () => atualizarPainel(0)); 
+    document.getElementById("dia-0").addEventListener("click", () => atualizarPainel(0));  // Segunda-feira
     document.getElementById("dia-1").addEventListener("click", () => atualizarPainel(1)); 
     document.getElementById("dia-2").addEventListener("click", () => atualizarPainel(2)); 
     document.getElementById("dia-3").addEventListener("click", () => atualizarPainel(3));  
