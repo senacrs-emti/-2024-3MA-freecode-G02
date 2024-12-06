@@ -17,7 +17,7 @@ const dados = fetch('./data.json')
       let temperatura = diaSelecionado.values.temperature;
       let umidade = diaSelecionado.values.humidity;
       let ventos = diaSelecionado.values.windSpeed;
-      let prevChuva = diaSelecionado.values.precipitationProbability;
+      let prevChuva = diaSelecionado.values.precipitationProbability;;
 
 
       document.getElementById('Dia').innerHTML = `${obterDiaDaSemanaEDiaDoMes(diaIndex)}`;
@@ -39,14 +39,17 @@ const dados = fetch('./data.json')
      if (prevChuva > 80) {
        weatherImage.src = './chuva.png'; 
        weatherImage.alt = 'Tempo chuvoso';
+       console.log('chuva')
        document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo chuvoso';
-     } else if (prevChuva < 80 || prevChuva > 40) {
+     } else if (prevChuva < 80 && prevChuva > 40) {
        weatherImage.src = './nublado.png';  
        weatherImage.alt = 'Tempo nublado';
+       console.log('nublado')
        document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo nublado';
-     } else{
+     } else if(prevChuva < 30){
        weatherImage.src = './ensolarado.png';  
        weatherImage.alt = 'Tempo ensolarado';
+       console.log('sol')
        document.getElementById('info-tempo2').querySelector('p').innerText = 'Tempo ensolarado';
      };
     }
