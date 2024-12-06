@@ -42,11 +42,13 @@ header{
     display: flex;
     justify-self: center;
     border-radius: 15px;
+    color: #ffffff;
 }
 .semana-prev-nav{
     width: 15%;
     background-color: transparent;
     border: none;
+
 }
 h1{
     margin: 30px;
@@ -55,6 +57,7 @@ h1{
 .nav-semana{
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }   
 #openPopupBtn {
     padding: 10px 20px;
